@@ -1,17 +1,32 @@
 package chap_08.camera;
 
-public class SpeedCam extends Camera {
+import chap_08.detector.Detectable;
+import chap_08.repoter.Reportable;
 
+public class SpeedCam extends Camera implements Detectable, Reportable {
+
+    private Detectable detector;
+    private Reportable reportor;
 
     @Override
     public void showMAinFeature() {
         System.out.println("속도 측정");
     }
+
+    public void setDetector(Detectable detector) {
+        this.detector = detector;
+    }
+
     public void detect() {
-        System.out.println("사고를 감지합니다.");
+        detector.detect();
+    }
+
+    public void setReportor(Reportable reportor) {
+        this.reportor = reportor;
     }
 
     public void report() {
-        System.out.println("사고 신고를 진행합니다.");
+        reportor.report();
     }
+
 }
