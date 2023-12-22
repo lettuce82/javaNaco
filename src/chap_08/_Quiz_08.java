@@ -18,4 +18,3 @@ public class _Quiz_08 {
         };
 
     }
-}
