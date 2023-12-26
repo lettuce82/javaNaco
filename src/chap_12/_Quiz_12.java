@@ -2,13 +2,21 @@ package chap_12;
 
 public class _Quiz_12 {
     public static void main(String[] args) {
-        readyItem readyItem = new readyItem();
-
         Runnable readyA = () -> {
-            readyItem.ready("A");
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("A 상품 준비 " + i + "/5");
+                if (i >= 5) {
+                    System.out.println("-- A 상품 준비 완료 --");
+                }
+            }
         };
         Runnable readyB = () -> {
-            readyItem.ready("B");
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("B 상품 준비 " + i + "/5");
+                if (i >= 5) {
+                    System.out.println("-- B 상품 준비 완료 --");
+                }
+            }
         };
         Thread threadSet = getThread(readyA, readyB);
         threadSet.start();
@@ -27,39 +35,14 @@ public class _Quiz_12 {
         }
 
         Runnable runnableSet = () -> {
-            readySet readySet = new readySet();
-            readySet.ready();
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("세트 상품 준비 " + i + "/5");
+                if (i >= 5) {
+                    System.out.println("== 세트 상품 준비 완료 ==");
+                }
+            }
         };
         return new Thread(runnableSet);
     }
 }
-
-class readyItem {
-    int step = 1;
-    void ready(String name) {
-        for (int i = 0; i < 5; i++) {
-            System.out.println(name + " 상품 준비 " + step + "/5");
-            if (step >= 5) {
-                step = 0;
-                System.out.println("-- " + name +  "상품 준비 완료 --");
-            }
-            step++;
-        }
-    }
-}
-
-class readySet {
-    int step = 1;
-    void ready() {
-        for (int i = 0; i < 5; i++) {
-            System.out.println("세트 상품 포장 " + step + "/5");
-            if (step >= 5) {
-                step = 0;
-                System.out.println("== 세트 상품 포장 완료 ==");
-            }
-            step++;
-        }
-    }
-}
-
 
