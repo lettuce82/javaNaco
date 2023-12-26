@@ -26,12 +26,9 @@ public class _Quiz_12 {
             throw new RuntimeException(e);
         }
 
-        Runnable runnableSet = new Runnable() {
-            @Override
-            public void run() {
-                readySet readySet = new readySet();
-                readySet.ready();
-            }
+        Runnable runnableSet = () -> {
+            readySet readySet = new readySet();
+            readySet.ready();
         };
         return new Thread(runnableSet);
     }
